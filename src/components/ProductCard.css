@@ -1,0 +1,124 @@
+.product-card {
+  position: relative;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.product-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.product-image {
+  position: relative;
+  padding-top: 100%; /* 1:1 Aspect Ratio */
+  overflow: hidden;
+  background-color: #f9f9f9;
+}
+
+.product-image img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 10px;
+  transition: transform 0.3s;
+}
+
+.product-card:hover .product-image img {
+  transform: scale(1.05);
+}
+
+.product-info {
+  padding: 15px;
+}
+
+.product-name {
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.product-price {
+  font-size: 12px;
+  color: #666;
+}
+
+.wishlist-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+  z-index: 2;
+  transition: background-color 0.3s;
+}
+
+.wishlist-button svg {
+  stroke: #333;
+  fill: none;
+  stroke-width: 2;
+  transition: fill 0.3s, stroke 0.3s;
+}
+
+.wishlist-button.active svg {
+  fill: #ff4d4d;
+  stroke: #ff4d4d;
+}
+
+.wishlist-button:hover {
+  background-color: #f5f5f5;
+}
+
+@media (max-width: 768px) {
+  .product-card {
+    border: none;
+    border-radius: 0;
+  }
+
+  .product-info {
+    padding: 10px 0;
+  }
+
+  .product-name {
+    font-size: 12px;
+    font-weight: normal;
+    text-transform: uppercase;
+  }
+
+  .product-price {
+    font-size: 11px;
+  }
+
+  .wishlist-button {
+    top: 5px;
+    right: 5px;
+    width: 25px;
+    height: 25px;
+  }
+
+  .wishlist-button svg {
+    width: 16px;
+    height: 16px;
+  }
+}

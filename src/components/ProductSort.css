@@ -1,0 +1,66 @@
+.product-sort {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  width: 100%;
+  gap: 10px;
+  border-radius: 4px;
+  padding: 12px;
+  border-top: 2px solid var(--border-color);
+  border-bottom: 2px solid var(--border-color);
+}
+
+.sort-dropdown{
+  padding: 4px 8px;
+  border: none;
+  font-size: larger;
+}
+
+.sort-dropdown option {
+  font-size: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  color: #666;
+}
+
+.sort-option button.active {
+  font-weight: 600;
+  color: #000;
+}
+
+.sort-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .product-sort {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: white;
+    border: none;
+    border-bottom: 1px solid var(--border-color);
+    border-radius: 0;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .sort-option option {
+    font-size: 14px;
+    padding: 10px 15px;
+  }
+
+  .shop-sort-container {
+    position: relative;
+    display: none;
+  }
+
+  .shop-sort-container.mobile-visible {
+    display: block;
+  }
+}
