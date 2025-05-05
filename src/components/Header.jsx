@@ -55,15 +55,20 @@ const Header = () => {
       </div>
       <div className="main-header">
         <div className="container main-header-container">
-        <button className="mobile-menu-btn" onClick={toggleMobileMenu}>
-              <RxHamburgerMenu size={20} />
-            </button>
+          <button className="mobile-menu-btn" onClick={toggleMobileMenu}>
+            <RxHamburgerMenu size={20} />
+          </button>
           <div className="logo-container">
-            <Link to="/" className="logo">
+            <span
+              onClick={() => {
+                navigate("/");
+              }}
+              className="logo"
+            >
               <div className="logo-icon">
                 <img src="./Logo.png" alt="Logo" />
               </div>
-            </Link>
+            </span>
           </div>
 
           <h1>LOGO</h1>
@@ -71,33 +76,37 @@ const Header = () => {
           <div className="header-actions">
             <CiSearch size={20} />
 
-            <Link to="/wishlist">
+            <span
+              onClick={() => {
+                navigate("/wishlist");
+              }}
+            >
               <IoHeartOutline size={20} />
               {wishlistItems.length > 0 && (
                 <span className="wishlist-count">{wishlistItems.length}</span>
               )}
-            </Link>
-            <Link to="/cart">
+            </span>
+            <span onClick={() => navigate("/cart")}>
               <BsHandbag size={20} />
               {cartItems.length > 0 && (
                 <span className="cart-count">{cartItems.length}</span>
               )}
-            </Link>
+            </span>
             {user ? (
               <div className="user-menu">
                 <svg viewBox="0 0 24 24" width="20" height="20">
                   <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2M12 7a4 4 0 100-8 4 4 0 000 8z"></path>
                 </svg>
                 <div className="user-dropdown">
-                  <Link to="/profile">Profile</Link>
-                  <Link to="/orders">Orders</Link>
+                  <span >Profile</span>
+                  <span >Orders</span>
                   <button onClick={handleLogout}>Logout</button>
                 </div>
               </div>
             ) : (
-              <Link to="/login">
+              <span onClick={() => navigate("/login")}>
                 <CiUser size={20} />
-              </Link>
+              </span>
             )}
             <div className="language-selector">
               <select>
@@ -106,27 +115,27 @@ const Header = () => {
                 <option value="es">ESP</option>
               </select>
             </div>
-           
           </div>
         </div>
 
         <div className="main-nav-container">
           <nav className={`main-nav ${mobileMenuOpen ? "mobile-open" : ""}`}>
-          <div className="close-icon" onClick={()=>{setMobileMenuOpen(false);}}>
-                <IoIosCloseCircle size={40} />
-              </div>
-            <ul className="nav-links">             
+            <div
+              className="close-icon"
+              onClick={() => {
+                setMobileMenuOpen(false);
+              }}
+            >
+              <IoIosCloseCircle size={40} />
+            </div>
+            <ul className="nav-links">
               <li>
                 <Link to="/">SHOP</Link>
               </li>
               <li>SKILLS</li>
               <li>STORIES</li>
-              <li>
-                <Link to="/about">ABOUT</Link>
-              </li>
-              <li>
-                <Link to="/contact">CONTACT US</Link>
-              </li>
+              <li onClick={() => navigate("/about")}>ABOUT</li>
+              <li onClick={()=>navigate("/contact")}> CONTACT US</li>
             </ul>
           </nav>
         </div>

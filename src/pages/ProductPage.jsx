@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { useParams, Link } from "react-router-dom"
+import { useParams, Link ,useNavigate} from "react-router-dom"
 import { useAuth } from "../context/AuthContext"
 import { useCart } from "../context/CartContext"
 import { useWishlist } from "../context/WishlistContext"
@@ -17,6 +17,8 @@ const ProductPage = () => {
   const [quantity, setQuantity] = useState(1)
   const [isWishlisted, setIsWishlisted] = useState(false)
   const [relatedProducts, setRelatedProducts] = useState([])
+
+  const nav = useNavigate();
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -73,13 +75,13 @@ const ProductPage = () => {
     <div className="product-page">
       <div className="container">
         <div className="product-breadcrumb">
-          <Link to="/">Home</Link> / <Link to="/shop">Shop</Link> / <span>{product.title}</span>
+          <Link to="/">Home</Link> / <span >Shop</span> / <span>{product.title}</span>
         </div>
 
         <div className="product-details">
           <div className="product-gallery">
             <div className="product-main-image">
-              <img src={product.image || "/placeholder.svg"} alt={product.title} />
+              <img src={product.image } alt={product.title} />
             </div>
           </div>
 
@@ -144,13 +146,13 @@ const ProductPage = () => {
             <div className="related-grid">
               {relatedProducts.map((relatedProduct) => (
                 <div key={relatedProduct.id} className="related-product">
-                  <Link to={`/product/${relatedProduct.id}`}>
+                  <span onClick={()=>nav(`/product/${relatedProduct.id}`)}>
                     <div className="related-image">
                       <img src={relatedProduct.image || "/placeholder.svg"} alt={relatedProduct.title} />
                     </div>
                     <h3>{relatedProduct.title}</h3>
                     <div className="related-price">${relatedProduct.price.toFixed(2)}</div>
-                  </Link>
+                  </span>
                 </div>
               ))}
             </div>

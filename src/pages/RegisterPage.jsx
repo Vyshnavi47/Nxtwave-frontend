@@ -82,7 +82,7 @@ const RegisterPage = () => {
             </div>
 
             <div className="auth-links">
-              <Link to="/login">Already have an account? Login</Link>
+              <span onClick={()=>navigate("/login")}>Already have an account? Login</span>
             </div>
           </form>
         </div>

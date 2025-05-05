@@ -59,8 +59,8 @@ const LoginPage = () => {
             </div>
 
             <div className="auth-links">
-              <Link to="/forgot-password">Forgot Password?</Link>
-              <Link to="/register">Don't have an account? Register</Link>
+              <span >Forgot Password?</span>
+              <span onClick={()=>navigate("/register")}>Don't have an account? Register</span>
             </div>
           </form>
         </div>
